@@ -46,21 +46,39 @@ async function fetchJson(url, payload = {}) {
     .catch((error) => error)
 }
 
-// Image change on click
-const buttons = document.querySelectorAll('.square')
+// const circles = document.querySelectorAll('.circle');
 
-buttons.forEach(button => {
-  buttons.addEventListener('click', function() {
-    const img = this.querySelector('img')
-    
-    const original = this.getAttribute('data-original-src')
-    const alt = this.getAttribute('data-alt-src')
+// circles.forEach(circle => {
+//     circle.addEventListener('click', function() {
+//         console.log("RAAK! Ik heb op een bubbel geklikt.");
+//         this.classList.toggle('paused');
+//     });
+// });
 
-    if (img.src.includes(original)) {
-      img.src = alt;
-    } else {
-      img.src = original
-    }
-  })
-})
+const diveButton = document.getElementById('dive-btn');
+const counterElement = document.getElementById('counter');
 
+const circles = document.querySelectorAll('.circle');
+const totalCircles = circles.length; 
+
+let score = 0;
+
+circles.forEach(circle => {
+    circle.addEventListener('mouseenter', function() { 
+        
+        if (this.classList.contains('pop')) return;
+
+        score++;
+        counterElement.innerText = score;
+
+        if (score === totalCircles) {
+            diveButton.style.display = 'block';
+        }
+
+        this.classList.add('pop');
+
+        setTimeout(() => {
+            this.style.visibility = 'hidden';
+        }, 4000);
+    });
+});

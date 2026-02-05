@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <script src="script.js" defer></script>
+    <style>@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&display=swap');</style>
     <title>Document</title>
 </head>
 <body>
@@ -12,7 +13,41 @@
         <section>
             <h1 class="name"></h1>
         </section>
-        
+        <picture>
+            <img src="images/diver.png" alt="person diving">
+        </picture> 
+        <div class="circles-container">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"><img src="images/dumbell.png" alt=""></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+        <form>
+            <label>
+                <input type="radio" name="color-theme" value="light" checked> light
+            </label>
+            <label>
+                <input type="radio" name="color-theme" value="dark"> dark
+            </label> 
+        </form>
+        <button id="dive-btn">DIVE</button>
+        <div class="score-board">Score: <span id="counter">0</span></div>
     </main>
 </body>
 </html>
