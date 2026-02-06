@@ -1,60 +1,80 @@
-// API get name
-const apiURL = 'https://fdnd.directus.app/items/person/296'
-const parentElement = document.querySelector('.name')
+// ///// API get data
+// const apiURL = 'https://fdnd.directus.app/items/person/296'
+// const parentElement = document.querySelector('.name')
+// const customData = document.querySelector('.custom-data')
 
-// zwengel het script aan....
-startLoading(parentElement)
-fetchJson(apiURL)
-    .then(({ data }) => {
-        parseCustomString(data.custom)
-        writeHTML(parentElement, parseCard(data))
-        stopLoading(parentElement)
-})
+// // start script...
+// startLoading(parentElement)
+// fetchJson(apiURL)
+//     .then(({ data }) => {
+//         parseCustomString(data.custom)
+//         writeHTML(parentElement, parseCard(data))
+//         stopLoading(parentElement)
+// })
 
-// alle gebruikte functies
-   // parse the passed string to JSON and return it
-function parseCustomString(string) {
-    return JSON.parse(string)
+// /// all functions
+// // parse the passed string to JSON and return it
+// function parseCustomString(string) {
+//     return JSON.parse(string)
+// }
+
+// // write the passed HTML to the the passed target element
+// function writeHTML(target, html) {
+//     target.innerHTML = html
+// }
+
+// // add the loading class to the passed element
+// function startLoading(target){
+//     target.classList.add('loading')
+// }
+
+// // remove the loading class from the passed element
+// function stopLoading(target){
+//         target.classList.remove('loading')
+// }
+
+// function parseCard(userData) {
+//     return `
+//     <article>
+//         <h1>${userData.name}</h1>
+//     </article>
+//     `
+// }
+
+// async function fetchJson(url, payload = {}) {
+//   return await fetch(url, payload)
+//     .then((response) => response.json())
+//     .catch((error) => error)
+// }
+
+getname()
+ 
+async function getname() {
+    const baseUrl = 'https://fdnd.directus.app';
+    const endpoint = '/items/person/296';
+ 
+    const URL = baseUrl + endpoint
+ 
+    let response = await fetch(URL)
+    console.log(response);
+ 
+    let personInfo  = await response.json();
+    console.log(personInfo);
+ 
+    const article = document.querySelector('article');
+    article.insertAdjacentHTML("beforeend",`<h1>${personInfo.data.name}</h1>`);
+
+    const customData = document.querySelector('.custom-data');
+    customData.insertAdjacentHTML("beforeend",
+      `
+      <p>${personInfo.data.nickname}</p>
+      <p>${personInfo.data.birthdate}</p>
+      <p>${personInfo.data.bio}</p>
+      `
+    );
 }
 
-// write the passed HTML to the the passed target element
-function writeHTML(target, html) {
-    target.innerHTML = html
-}
-
-// add the loading class to the passed element
-function startLoading(target){
-    target.classList.add('loading')
-}
-
-// remove the loading class from the passed element
-function stopLoading(target){
-        target.classList.remove('loading')
-}
-
-function parseCard(userData) {
-    return `
-    <article>
-        <h1>${userData.name}</h1>
-    </article>
-    `
-}
-
-async function fetchJson(url, payload = {}) {
-  return await fetch(url, payload)
-    .then((response) => response.json())
-    .catch((error) => error)
-}
-
-// const circles = document.querySelectorAll('.circle');
-
-// circles.forEach(circle => {
-//     circle.addEventListener('click', function() {
-//         console.log("RAAK! Ik heb op een bubbel geklikt.");
-//         this.classList.toggle('paused');
-//     });
-// });
-
+///// dive button appears after all  circles are popped
 const diveButton = document.getElementById('dive-btn');
 const counterElement = document.getElementById('counter');
 
@@ -81,4 +101,9 @@ circles.forEach(circle => {
             this.style.visibility = 'hidden';
         }, 4000);
     });
+});
+
+///// flipping card feature
+document.getElementById('dive-btn').addEventListener('click', () => {
+  document.getElementById('card').classList.toggle('flipped');
 });

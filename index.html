@@ -9,13 +9,38 @@
     <title>Document</title>
 </head>
 <body>
-    <main class="container">
-        <section>
-            <h1 class="name"></h1>
-        </section>
-        <picture>
-            <img src="images/diver.png" alt="person diving">
-        </picture> 
+    <main>
+        <div class="card-container">
+            <div class="card" id="card">
+                <div class="front">
+                    <article>
+                        <!-- <h1 class="name"></h1> -->
+                    </article>
+                    <picture>
+                        <img src="images/diver.png" alt="person diving">
+                    </picture> 
+                    <div class="score-board">Score: <span id="counter">0</span></div>
+                    <form>
+                        <label>
+                            <input type="radio" name="color-theme" value="light" checked> light
+                        </label>
+                        <label>
+                            <input type="radio" name="color-theme" value="dark"> dark
+                        </label> 
+                    </form>
+                </div>
+                <div class="back">
+                    <h2>ABOUT ME</h2>
+                    <p class="custom-data"></p>
+                    <!-- <img src="images/airplane1.png" alt="airplane"> -->
+                    <div class="scrolling-wrapper">
+                        <img src="images/jeppe1.jpg" alt="">
+                        <img src="images/jeppe2.png" alt="">
+                        <img src="images/jeppe3.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="circles-container">
             <div class="circle"></div>
             <div class="circle"></div>
@@ -38,16 +63,7 @@
             <div class="circle"></div>
             <div class="circle"></div>
         </div>
-        <form>
-            <label>
-                <input type="radio" name="color-theme" value="light" checked> light
-            </label>
-            <label>
-                <input type="radio" name="color-theme" value="dark"> dark
-            </label> 
-        </form>
         <button id="dive-btn">DIVE</button>
-        <div class="score-board">Score: <span id="counter">0</span></div>
     </main>
 </body>
 </html>
