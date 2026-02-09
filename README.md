@@ -54,5 +54,7 @@ wat ga ik morgen doen?
 # Bronnen
 Flipping card: https://www.google.com/search?q=flipping+card+on+button&rlz=1C5CHFA_enNL1073NL1073&oq=flipping+card+on+button&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIHCAEQIRigAdIBCDM3NjJqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8
 Horizontal scroll: https://codepen.io/pehaa/pen/zYxbxQg?editors=1100
+Wave animation: https://www.youtube.com/watch?v=cxOaxNQVzrM
+
 
 
