@@ -28,16 +28,16 @@ wat ga ik maandag doen? > Zorgen dat de slide show met foto's werkt en meer deta
 
 ## Week 2
 ### Maandag 9 februari
-wat heb ik vandaag gedaan? > Ik was ziek thuis maar heb toch mn best gedaan: slide show met foto's werkend gemaakt, golven animatie op de voorkant van de card, golvende text gemaakt. geprobeerd het onderwaterdeel onder de golven een andere kleur te geven.
+wat heb ik vandaag gedaan? > Ik was ziek thuis maar heb toch mn best gedaan: slide show met foto's werkend gemaakt, golven animatie op de voorkant van de card, golvende text gemaakt, geprobeerd het onderwaterdeel onder de golven een andere kleur te geven.
 hoelang duurde het? > Ik heb zo'n 5 uur achter mijn laptop gezeten.
 wat heb ik vandaag geleerd? > Horizontal scroll maken.
 wat ga ik morgen doen? > Onderwater een andere kleur geven dan boven water.
 
 ### Dinsdag 10 februari
-wat heb ik vandaag gedaan? > 
-hoelang duurde het? > 
-wat heb ik vandaag geleerd? > 
-wat ga ik morgen doen? > 
+wat heb ik vandaag gedaan? > workshop dry code van cyd, onderwater onder de golven moving gradient background, slide toegevoegd met favorite movies: mijn favorite movie en random fav movies van klasgenoten (uit API), meer foto's toegevoegd aan de slide show met foto's, emoji's die iets over mij zeggen in de luchtbellen, mini diver image op de slides.
+hoelang duurde het? > de workshop duurde 1 uur, de rest van de dag (7 uur) ben ik bezig geweest met de bovenstaande features.
+wat heb ik vandaag geleerd? > refresher op hoe math random werkt, hoe je utility classes kan gebruiken voor nettere code.
+wat ga ik morgen doen? > de hele website responsive maken.
 
 ### Woensdag 11 februari
 wat heb ik vandaag gedaan? > 
