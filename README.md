@@ -34,10 +34,10 @@ wat heb ik vandaag geleerd? > Horizontal scroll maken.
 wat ga ik morgen doen? > Onderwater een andere kleur geven dan boven water.
 
 ### Dinsdag 10 februari
-wat heb ik vandaag gedaan? > workshop dry code van cyd, onderwater onder de golven moving gradient background, slide toegevoegd met favorite movies: mijn favorite movie en random fav movies van klasgenoten (uit API), meer foto's toegevoegd aan de slide show met foto's, emoji's die iets over mij zeggen in de luchtbellen, mini diver image op de slides.
+wat heb ik vandaag gedaan? > workshop dry code van cyd, onderwater onder de golven moving gradient background, slide toegevoegd met favorite movies: mijn favorite movie en random fav movies van klasgenoten (uit API), meer foto's toegevoegd aan de slide show met foto's, emoji's die iets over mij zeggen in de luchtbellen, animatie luchtbellen mooier gemaakt met scale, mini diver image op de slides, begin leerdoelen slide.
 hoelang duurde het? > de workshop duurde 1 uur, de rest van de dag (7 uur) ben ik bezig geweest met de bovenstaande features.
 wat heb ik vandaag geleerd? > refresher op hoe math random werkt, hoe je utility classes kan gebruiken voor nettere code.
-wat ga ik morgen doen? > de hele website responsive maken.
+wat ga ik morgen doen? > leerdoelen slide afmaken en de hele website responsive maken.
 
 ### Woensdag 11 februari
 wat heb ik vandaag gedaan? > 
