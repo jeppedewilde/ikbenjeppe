@@ -3,7 +3,6 @@ body {
 	margin: 0;
 	padding: 0;
 	min-height: 100vh;
-	background-color: rgb(120, 200, 244);
 	overflow: hidden;
 	background-color:var(--bg);
 	color:var(--clr);
@@ -15,7 +14,8 @@ body {
 	
 	--bg:light-dark(rgb(99, 196, 241), rgb(12, 8, 59));
   	--clr-c:light-dark(rgba(25, 127, 186, 0.5), rgba(246, 255, 0, 0.75));
-  	--clr-b:light-dark(rgba(9, 47, 69, 0.2), rgb(255, 0, 0));
+  	--clr-b:light-dark(rgba(9, 47, 69), rgb(255, 0, 0));
+	--bg-gradient: linear-gradient(118deg,rgba(42, 123, 155, 1) 0%, rgba(76, 181, 138, 1) 15%, rgba(42, 123, 155, 1) 30%, rgba(76, 181, 138, 1) 45%, rgba(42, 123, 155, 1) 60%, rgba(76, 181, 138, 1) 75%, rgba(187, 214, 100, 1) 90%, rgba(76, 181, 138, 1) 100%);
 }
 
 :root:has( [value="light"]:checked ) { 
@@ -24,6 +24,7 @@ body {
 
 :root:has( [value="dark"]:checked ) { 
 	color-scheme:dark;
+	--bg-gradient: linear-gradient(118deg,rgba(9, 9, 121, 1) 0%, rgba(42, 114, 164, 1) 15%, rgba(9, 9, 121, 1) 30%, rgba(42, 114, 164, 1) 45%, rgba(9, 9, 121, 1) 60%, rgba(42, 114, 164, 1) 75%, rgba(9, 9, 121, 1) 90%, rgba(42, 114, 164, 1) 100%);
 }
 
 article {
@@ -34,7 +35,7 @@ article {
 h1 {
 	text-align: center;
 	margin-top: 3rem;
-	font-size: 4rem;
+	font-size: 3rem;
   	font-family: "Cabin Sketch", sans-serif;
   	font-weight: 700;
   	font-style: normal;
@@ -53,24 +54,109 @@ form {
     border-radius: 10px;
 }
 
-/* input[value="dark"]:checked {
-    background-color: gold;
-    border-color: gold;
-    box-shadow: 0 0 10px gold;
+/* waves animation */
+.waves {
+	position: relative;
+	width: 100%;
+	height: 100vh;
 }
 
-input[value="light"]:checked {
-    background-color: navy;
-    border-color: navy;
-    box-shadow: 0 0 10px navy;
-} */
+.waves .wave {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100px;
+	background: url('../images/wave.png');
+	background-size: 1000px 100px;
+}
 
+.waves::after {
+    content: '';
+    position: absolute;
+    top: 95px; 
+    left: 0;
+    width: 100%;
+    bottom: 0; 
+    background: var(--bg-gradient);
+    background-size: 400% 400%;
+    animation: gradientFlow 30s ease infinite;
+	overflow: hidden;
+    z-index: 0; 
+}
+
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.waves .wave.wave1 {
+	animation: wave1 30s linear infinite;
+	z-index: 1000;
+	opacity: 1;
+	animation-delay: 0s;
+	bottom: 0;
+}
+
+.waves .wave.wave2 {
+	animation: wave2 15s linear infinite;
+	z-index: 999;
+	opacity: 0.5;
+	animation-delay: -5s;
+	bottom: 10px;
+}
+
+.waves .wave.wave3 {
+	animation: wave1 15s linear infinite;
+	z-index: 998;
+	opacity: 0.2;
+	animation-delay: -2s;
+	bottom: 15px;
+}
+
+.waves .wave.wave4 {
+	animation: wave2 5s linear infinite;
+	z-index: 997;
+	opacity: 0.7;
+	animation-delay: -5s;
+	bottom: 10px;
+}
+
+@keyframes wave1 {
+	0% {
+		background-position-x: 0;
+	}
+	100% {
+		background-position-x: 1000px;
+	}
+}
+
+@keyframes wave2 {
+	0% {
+		background-position-x: 0;
+	}
+	100% {
+		background-position-x: -1000px;
+	}
+}
+
+/* floating diver image */
 picture {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 100vw;
-	margin-top: 6rem;
+	top: 19rem;
+	position: fixed;
+	z-index: 10001;
+	pointer-events: none;
 }
 
 picture img {
@@ -79,6 +165,20 @@ picture img {
 	object-fit: contain;
 	min-width: 40vw;
 	animation: floatUpDown 3s ease-in-out infinite;
+}
+
+@media screen and (width >= 600px) {
+	picture img {
+		min-width: 20vw;
+		max-width: 100%;
+	}
+}
+
+@media screen and (width >= 1000px) {
+	picture img {
+		min-width: 13vw;
+		max-width: 100%;
+	}
 }
 
 @keyframes floatUpDown {
@@ -90,6 +190,7 @@ picture img {
   }
 }
 
+/* airbubbles animation */
 .circles-container {
     position: absolute;
     top: 0;
@@ -111,11 +212,11 @@ picture img {
   	position: absolute;
   	bottom: -70px;
   	animation: flyUp linear infinite;
-	scale: 1;
 	will-change: transform, bottom;
 	pointer-events: auto; 
     cursor: pointer;    
     z-index: 11;
+	transition: transform 0.3s ease-out, opacity 0.3s ease-out;
 }
 
 .circle:nth-child(1)  { left: 5%;  animation-delay: 0s;   width: 40px; height: 40px; animation-duration: 8s; }
@@ -144,31 +245,34 @@ picture img {
     bottom: -120px;
     opacity: 1;
   }
-  80% {
+  95% {
     opacity: 1;
   }
   100% {
-    bottom: 110vh; 
+    bottom: 72vh; 
     opacity: 0;   
   }
 }
 
 .circle img {
-  width: 70%; 
-  height: 70%;
-  object-fit: contain; 
-  opacity: 1;
+  	width: 70%; 
+  	height: 70%;
+  	object-fit: contain; 
+  	opacity: 1;
+}
+
+.circle p {
+	font-size: 2em;
 }
 
 #dive-btn {
-	display: none; 
+	/* display: none;  */
     margin: 2rem auto;
     padding: 1rem 2rem;
     font-size: 1.5rem;
     font-weight: bold;
     color: rgb(255, 255, 255);
     background-color: var(--clr-c); 
-    /* border: 4px solid var(--clr-b); */
     border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
@@ -201,35 +305,29 @@ picture img {
 }
 
 .pop {
-    animation: explode 3s forwards ease-in-out;
-    pointer-events: none; 
-}
-
-@keyframes explode {
-0% { 
-        transform: scale(1); 
-        opacity: 1; 
-    }
-
-100% { 
-        transform: scale(2); 
-        opacity: 0; 
-    }
+	transform: scale(2);
+    opacity: 0;
+    pointer-events: none;
 }
 
 /* flipping card feature */
 .card-container { 
-	perspective: 1000px; 
+	perspective: 1000px;
+	width: 100vw;
+    height: 100vh;
+    overflow: hidden; 
 }
 
 .card {
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  position: relative;
+  	transition: transform 0.6s;
+  	transform-style: preserve-3d;
+  	position: relative;
+  	width: 100%;
+  	height: 100%;
 }
 
 .card.flipped { 
-	transform: rotateY(180deg); 
+	transform: rotateX(180deg); 
 }
 
 .front, .back {
@@ -240,79 +338,135 @@ picture img {
 
 .back { 
 	transform: rotateY(180deg);
+	transform: rotateX(180deg);
 }
 
 .back h2 {
 	text-align: center;
 	margin-top: 2rem;
-	font-size: 2rem;
+	font-size: 3rem;
   	font-family: "Cabin Sketch", sans-serif;
   	font-weight: 700;
 }
 
 .back p {
-	padding: 1rem 2rem;
-	font-size: 1.5rem;
-	line-height: 1.5;
+	padding: 0.5rem 2rem;
+	font-size: 1.7rem;
 }
 
-/* plane animation */
-/* .back img {
-	position: absolute;
-  	transform: translate(-50%, -50%);
-  	width: 100px;
-  	height: auto;
-  	animation: flyBy 10s linear infinite;
-	will-change: transform;
+.custom-data {
+	margin-left: 3rem;
 }
 
-@keyframes flyBy {
-  0% {
-    transform: translate(0vw, 0vh);
-  }
-  50% {
-	transform: translate(50vw, 50vh);
-  }
-  100% {
-    transform: translate(100vw, 100vh);
-  }
-} */
+p:not(.custom-data) {
+	font-weight: bold;
+}
 
 /* scrolling images */
-
-/* hide scrollbar */
-::-webkit-scrollbar {
-  width: 1px;
-  height: 1px;
-}
-
-::-webkit-scrollbar-button {
-  width: 1px;
-  height: 1px;
-}
-.external {
-  overflow: hidden;
-  height: 100vh;
+.slide {
+	width: 100vw;
+	height: 100vh;
+	background: var(--bg-gradient);
 }
 
 .scrolling-wrapper {
-display: flex;
-  	flex-direction: column;
-  	align-items: center;
-  	width: 100vh;
-  	transform: rotate(-90deg) translate3d(0,-100vh,0);
-  	transform-origin: right top;
-  	overflow-y: auto;
-  	overflow-x: hidden;
-  	padding: 0;
-  	height: 100vw;
-  	perspective: 1px;
-	transform-style: preserve-3d;
-  	padding-bottom: 10rem;
+	display: flex;
+	flex-direction: row;
+	width: 1200vw;
+	transform: rotate(90deg) translateY(-100vh);
+	transform-origin: top left;
 }
 
-.scrolling-wrapper img {
-  width: auto;
-  height: 60vh;
+.outer-wrapper {
+	width: 100vh;
+	height: 100vw;
+	transform: rotate(-90deg) translateX(-100vh);
+	transform-origin: top left;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	position: absolute;
+	scrollbar-width: none;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
+.slide img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.mini-diver {
+	position: absolute;
+    bottom: 20px; 
+    left: 20px;  
+    width: 80px;  
+    z-index: 100; 
+    pointer-events: none; 
+    animation: floatMini 3s ease-in-out infinite;
+}
+
+@keyframes floatMini {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+}
+
+/* wavy text effect */
+.wavy-active span {
+    display: inline-block;
+    animation: wave-text 2s ease-in-out infinite;
+    animation-delay: calc(0.1s * var(--i));
+}
+
+@keyframes wave-text {
+    0%, 100% { 
+		transform: translateY(0); 
+	}
+    50% { 
+		transform: translateY(-10px); 
+	}
+}
+
+/* slide 2 - favorite movies */
+.movie-block {
+	padding: 1rem;
+	margin: 1rem 0;
+}
+
+.movie-block h3 {
+	margin: 0;
+	font-size: 1.5rem;
+}
+
+.movie-block div:first-child {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+#random-movie-btn {
+	margin-left: 1rem;
+	padding: 0.5rem 1rem;
+	font-size: 1rem;
+	font-weight: bold;
+	color: rgb(255, 255, 255);
+	background-color: var(--clr-c); 
+	border-radius: 20px;
+	cursor: pointer;
+	transition: background-color 0.3s, color 0.3s;
+}
+
+/* progress bar */
+#myProgress {
+  width: 100%;
+  background-color: var(--bg);
+}
+
+#myBar {
+  width: 1%;
+  height: 30px;
+  background-color: var(--clr-c);
+  transition: width 0.4s ease-in-out;
+}
