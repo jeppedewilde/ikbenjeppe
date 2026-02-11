@@ -1,52 +1,4 @@
-// ///// API get data
-// const apiURL = 'https://fdnd.directus.app/items/person/296'
-// const parentElement = document.querySelector('.name')
-// const customData = document.querySelector('.custom-data')
-
-// // start script...
-// startLoading(parentElement)
-// fetchJson(apiURL)
-//     .then(({ data }) => {
-//         parseCustomString(data.custom)
-//         writeHTML(parentElement, parseCard(data))
-//         stopLoading(parentElement)
-// })
-
-// /// all functions
-// // parse the passed string to JSON and return it
-// function parseCustomString(string) {
-//     return JSON.parse(string)
-// }
-
-// // write the passed HTML to the the passed target element
-// function writeHTML(target, html) {
-//     target.innerHTML = html
-// }
-
-// // add the loading class to the passed element
-// function startLoading(target){
-//     target.classList.add('loading')
-// }
-
-// // remove the loading class from the passed element
-// function stopLoading(target){
-//         target.classList.remove('loading')
-// }
-
-// function parseCard(userData) {
-//     return `
-//     <article>
-//         <h1>${userData.name}</h1>
-//     </article>
-//     `
-// }
-
-// async function fetchJson(url, payload = {}) {
-//   return await fetch(url, payload)
-//     .then((response) => response.json())
-//     .catch((error) => error)
-// }
-
+///// API get data /////
 getname()
  
 async function getname() {
@@ -83,7 +35,7 @@ async function getname() {
     }
   }
 
-///// dive button appears after all  circles are popped
+///// dive button appears after all  circles are popped /////
 const diveButton = document.getElementById('dive-btn');
 const counterElement = document.getElementById('counter');
 
@@ -112,12 +64,12 @@ circles.forEach(circle => {
     });
 });
 
-///// flipping card feature
+///// flipping card feature /////
 document.getElementById('dive-btn').addEventListener('click', () => {
   document.getElementById('card').classList.toggle('flipped');
 });
 
-///// wavy text effect
+///// wavy text effect /////
 function makeTextWavy(selector) {
     const elements = document.querySelectorAll(selector);
 
@@ -136,9 +88,7 @@ function makeTextWavy(selector) {
     });
 }
 
-///// random movie selector
-// 
-
+///// random movie selector /////
 enableRandomMovie();
 
 async function enableRandomMovie() {
@@ -148,10 +98,10 @@ async function enableRandomMovie() {
     const URL = baseUrl + endpoint;
  
     let response = await fetch(URL);
-    console.log("Movie response:", response); // Optioneel om te checken
+    console.log("Movie response:", response); 
  
     let movieData = await response.json();
-    console.log("Movie data:", movieData); // Optioneel om te checken
+    console.log("Movie data:", movieData); 
     
     const allStudents = movieData.data;
 
@@ -179,7 +129,7 @@ async function enableRandomMovie() {
     }
 }
 
-///// time progress feature
+///// bar progress feature /////
 let currentWidth = 0; 
 
 const progressBtn = document.querySelector('#progress-btn');
@@ -188,17 +138,25 @@ const progressBar = document.querySelector('#myBar');
 if (progressBtn) { 
     progressBtn.addEventListener('click', () => {
         
-        if (currentWidth < 100) {
+        if (currentWidth === 100) {
+            currentWidth = 0;
+            progressBar.style.height = "0%";
+            
+            progressBar.style.backgroundColor = ""; 
+            
+            progressBtn.innerText = "Make progress"; 
+            
+        } else {
             currentWidth += 20; 
 
             if (currentWidth > 100) {
                 currentWidth = 100;
             }
 
-            progressBar.style.width = currentWidth + "%";
+            progressBar.style.height = currentWidth + "%";
             
             if (currentWidth === 100) {
-                progressBtn.innerText = "Finished! 🚀";
+                progressBtn.innerText = "Reload";
                 progressBar.style.backgroundColor = "gold";
             }
         }

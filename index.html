@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <script src="script.js" defer></script>
-    <style>@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&display=swap');</style>
-    <title>Document</title>
+    <title>Jeppe</title>
+    <link rel="icon" type="image/x-icon" href="/images/scuba-goggles.png">
 </head>
 <body>
     <main>
@@ -22,7 +22,7 @@
                         <div class="wave wave4"></div>
                     </div>
                     <picture>
-                        <img src="images/diver.png" alt="person diving">
+                        <img src="images/diverjeppe.png" alt="person diving">
                     </picture> 
                     <div class="score-board">Score: <span id="counter">0</span></div>
                     <form>
@@ -33,9 +33,10 @@
                             <input type="radio" name="color-theme" value="dark"> dark
                         </label> 
                     </form>
+                    <button id="dive-btn">DIVE</button>
                 </div>
                 <div class="back">
-                    <img src="images/diver.png" alt="person diving" class="mini-diver">
+                    <img src="images/diverjeppe.png" alt="person diving" class="mini-diver">
                     <div class="outer-wrapper">
                         <div class="scrolling-wrapper">
                             <div class="slide one">
@@ -63,11 +64,19 @@
                             </div>
                             <div class="slide three">
                                 <h2>LEARNING GOALS</h2>
-                                <div id="myProgress">
-                                    <div id="myBar"></div>
+                                <div class="goal-layout">
+                                    <div class="progress-container">
+                                        <div id="myProgress">
+                                            <div id="myBar"></div>
+                                        </div>
+                                        <button id="progress-btn">Make progress</button> 
+                                    </div>
+                                    <div class="goal-text">
+                                        <p>Creative websites</p>
+                                        <p>JavaScript</p>
+                                    </div>
                                 </div>
-                                <button id="progress-btn">Click Me</button> 
-                            </div>
+                            </div>  
                             <div class="slide four">
                                 <img src="images/jeppe1.jpg" alt="">
                             </div>
@@ -122,7 +131,6 @@
             <div class="circle"></div>
             <div class="circle"></div>
         </div>
-        <button id="dive-btn">DIVE</button>
     </main>
 </body>
 </html>

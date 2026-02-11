@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&display=swap');
+
 body {
 	font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
 	margin: 0;
@@ -6,6 +8,7 @@ body {
 	overflow: hidden;
 	background-color:var(--bg);
 	color:var(--clr);
+	border-color:var(--clr-b);
 	accent-color:var(--clr-a);
 }
 
@@ -13,8 +16,9 @@ body {
 	color-scheme:light dark;
 	
 	--bg:light-dark(rgb(99, 196, 241), rgb(12, 8, 59));
-  	--clr-c:light-dark(rgba(25, 127, 186, 0.5), rgba(246, 255, 0, 0.75));
-  	--clr-b:light-dark(rgba(9, 47, 69), rgb(255, 0, 0));
+  	--clr-c:light-dark(rgba(25, 127, 186, 0.5), rgba(255, 87, 252, 0.75));
+  	--clr-b:light-dark(rgba(9, 47, 69), rgb(89, 0, 255));
+	--clr-a:light-dark(rgb(0, 225, 255), rgb(255, 0, 255));
 	--bg-gradient: linear-gradient(118deg,rgba(42, 123, 155, 1) 0%, rgba(76, 181, 138, 1) 15%, rgba(42, 123, 155, 1) 30%, rgba(76, 181, 138, 1) 45%, rgba(42, 123, 155, 1) 60%, rgba(76, 181, 138, 1) 75%, rgba(187, 214, 100, 1) 90%, rgba(76, 181, 138, 1) 100%);
 }
 
@@ -54,7 +58,9 @@ form {
     border-radius: 10px;
 }
 
+/*******************/
 /* waves animation */
+/*******************/
 .waves {
 	position: relative;
 	width: 100%;
@@ -147,7 +153,9 @@ form {
 	}
 }
 
-/* floating diver image */
+/**********************/
+/* floating diver img */
+/**********************/
 picture {
 	display: flex;
 	justify-content: center;
@@ -167,17 +175,20 @@ picture img {
 	animation: floatUpDown 3s ease-in-out infinite;
 }
 
-@media screen and (width >= 600px) {
+@media (width >= 480px) {
 	picture img {
-		min-width: 20vw;
-		max-width: 100%;
+		min-width: 30vw;
 	}
 }
 
-@media screen and (width >= 1000px) {
+@media (width >= 600px) {
+	picture img {
+		min-width: 20vw;	}
+}
+
+@media (width >= 1000px) {
 	picture img {
 		min-width: 13vw;
-		max-width: 100%;
 	}
 }
 
@@ -190,7 +201,9 @@ picture img {
   }
 }
 
+/************************/
 /* airbubbles animation */
+/************************/
 .circles-container {
     position: absolute;
     top: 0;
@@ -210,7 +223,8 @@ picture img {
   	border-radius: 50%; 
 	box-shadow: inset 0px 0px 12px 2px var(--clr-b);
   	position: absolute;
-  	bottom: -70px;
+  	/* bottom: -70px; */
+	bottom: -120px;
   	animation: flyUp linear infinite;
 	will-change: transform, bottom;
 	pointer-events: auto; 
@@ -242,14 +256,14 @@ picture img {
 
 @keyframes flyUp {
   0% {
-    bottom: -120px;
+	translate:0 0;
     opacity: 1;
   }
   95% {
     opacity: 1;
   }
   100% {
-    bottom: 72vh; 
+	translate:0 calc(-72vh - 80px);
     opacity: 0;   
   }
 }
@@ -265,32 +279,44 @@ picture img {
 	font-size: 2em;
 }
 
+/***************/
+/* dive button */
+/***************/
 #dive-btn {
-	/* display: none;  */
+	display: none; 
     margin: 2rem auto;
     padding: 1rem 2rem;
     font-size: 1.5rem;
     font-weight: bold;
     color: rgb(255, 255, 255);
-    background-color: var(--clr-c); 
+    background-color: rgb(9, 9, 56, 0.8); 
+	border: none;
     border-radius: 20px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, color 0.3s, opacity 0.3s;
 	position: fixed; 
     bottom: 2rem;     
     left: 50%;      
     transform: translateX(-50%); 
     z-index: 10001;  
     margin: 0;
+	outline: 4px solid var(--clr-b);
+	outline-offset: -4px;
+  	transition: outline-offset 200ms ease;
 }
 
 #dive-btn:hover {
-	background-color: rgb(9, 9, 56, 0.8);
+	background-color: var(--clr-c);
 	color: rgb(255, 255, 255);
+	outline-offset: 1px;
 }
 
+/***************/
+/* score board */
+/***************/
 .score-board {
-    position: fixed;
+    display: none;
+	position: fixed;
     top: 20px;
     right: 20px;
     font-size: 1rem;
@@ -304,13 +330,18 @@ picture img {
     font-family: sans-serif;
 }
 
+/*****************/
+/* pop animation */
+/*****************/
 .pop {
 	transform: scale(2);
     opacity: 0;
     pointer-events: none;
 }
 
+/*************************/
 /* flipping card feature */
+/*************************/
 .card-container { 
 	perspective: 1000px;
 	width: 100vw;
@@ -330,12 +361,20 @@ picture img {
 	transform: rotateX(180deg); 
 }
 
+.card.flipped #dive-btn {
+	opacity: 0;
+	pointer-events: none;
+}
+
 .front, .back {
   backface-visibility: hidden;
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
 }
 
+/******************/
+/* card back side */
+/******************/
 .back { 
 	transform: rotateY(180deg);
 	transform: rotateX(180deg);
@@ -351,18 +390,45 @@ picture img {
 
 .back p {
 	padding: 0.5rem 2rem;
-	font-size: 1.7rem;
+	font-size: 1.5rem;
 }
 
 .custom-data {
 	margin-left: 3rem;
 }
 
+.back h2, .back p, .custom-data {
+	cursor: default
+}
+
+@media (width >= 768px) {
+	.back p {
+		padding: 0.5rem 4rem;
+		font-size: 1.7rem;
+	}
+
+	.custom-data {
+		margin-left: 5rem;
+	}
+}
+
+@media (width >= 1024px) {
+	.back p {
+		padding: 0.5rem 10rem;
+	}
+
+	.custom-data {
+		margin-left: 6rem;
+	}
+}
+
 p:not(.custom-data) {
 	font-weight: bold;
 }
 
-/* scrolling images */
+/********************/
+/* scrolling slides */
+/********************/
 .slide {
 	width: 100vw;
 	height: 100vh;
@@ -398,6 +464,9 @@ p:not(.custom-data) {
 	object-fit: cover;
 }
 
+/***********************/
+/* floating mini diver */
+/***********************/
 .mini-diver {
 	position: absolute;
     bottom: 20px; 
@@ -413,11 +482,18 @@ p:not(.custom-data) {
     50% { transform: translateY(-30px); }
 }
 
+/********************/
 /* wavy text effect */
+/********************/
 .wavy-active span {
     display: inline-block;
     animation: wave-text 2s ease-in-out infinite;
     animation-delay: calc(0.1s * var(--i));
+}
+
+.wavy-active span:hover {
+	color: var(--clr-a);
+	scale: 1.5;
 }
 
 @keyframes wave-text {
@@ -429,7 +505,9 @@ p:not(.custom-data) {
 	}
 }
 
-/* slide 2 - favorite movies */
+/*************************/
+/* favorite movies slide */
+/*************************/
 .movie-block {
 	padding: 1rem;
 	margin: 1rem 0;
@@ -453,20 +531,128 @@ p:not(.custom-data) {
 	font-weight: bold;
 	color: rgb(255, 255, 255);
 	background-color: var(--clr-c); 
+	border: none;
 	border-radius: 20px;
 	cursor: pointer;
 	transition: background-color 0.3s, color 0.3s;
+	outline: 4px solid var(--clr-b);
+	outline-offset: -4px;
+  	transition: outline-offset 200ms ease;
 }
 
-/* progress bar */
+#random-movie-btn:hover {
+	outline-offset: 1px;
+}
+
+/************************/
+/* learning goals slide */
+/************************/
+.goal-layout {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 #myProgress {
-  width: 100%;
-  background-color: var(--bg);
+    width: 2em; 
+    height: 20em; 
+    background-color: var(--bg);
+    border-radius: 1em;
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse; 
+    overflow: hidden;
+	flex-shrink: 0;
 }
 
 #myBar {
-  width: 1%;
-  height: 30px;
-  background-color: var(--clr-c);
-  transition: width 0.4s ease-in-out;
+    width: 100%;
+    height: 0%; 
+    background-color: var(--clr-c);
+    transition: height 0.4s ease-in-out;
+}
+
+.progress-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+#progress-btn {
+	padding: 0.5rem 1rem;
+	font-size: 1rem;
+	font-weight: bold;
+	color: rgb(255, 255, 255);
+	background-color: var(--clr-c); 
+	border: none;
+	border-radius: 20px;
+	cursor: pointer;
+	transition: background-color 0.3s, color 0.3s;
+	outline: 4px solid var(--clr-b);
+	outline-offset: -4px;
+  	transition: outline-offset 200ms ease;
+}
+
+#progress-btn:hover {
+	outline-offset: 1px;
+}
+
+.goal-text {
+    text-align: center;
+}
+
+.goal-text p {
+    font-family: "Cabin Sketch", sans-serif;
+    font-size: 1.5rem;
+	padding: 0;
+}
+
+@media (width >= 600px) {
+	.goal-layout {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between; 
+		align-items: center; 
+		padding: 2rem 4rem 0; 
+	}
+
+	.goal-text p {
+		background-color:var(--clr-c);
+  		border-radius: 50%; 
+		box-shadow: inset 0px 0px 12px 2px var(--clr-b);
+		height: 13rem;
+		width: 13rem;
+		padding: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.goal-text {
+		align-items: flex-end;
+	}
+}
+
+@media (width >= 768px) {
+	.goal-text p {
+		height: 13rem;
+		width: 13rem;
+	}
+}
+
+@media (width >= 1024px) {
+	.goal-text p {
+		height: 17rem;
+		width: 17rem;
+		font-size: 2rem;
+	}
+
+	.goal-layout {
+		padding: 0 6rem 0;
+	}
+
+	#myProgress {
+		height: 30em;
+	}
 }
